@@ -2,7 +2,7 @@ package user
 
 import "github.com/aleks20905/testWeb_templ/view/base"
 //import "github.com/aleks20905/testWeb_templ/db"
-import "github.com/aleks20905/testWeb_templ/jsonThing/model"
+import "github.com/aleks20905/testsWeb_templ/jsonThing"
 //import "github.com/aleks20905/testWeb_templ/db/model"
 import "fmt"
 import "encoding/json"
@@ -14,7 +14,7 @@ import "log"
 
 var greating = "cool all works"
 
-templ Show(data []model.SensorData){
+templ Show(){
   @base.Base(){    
 
     <h1>helo world or someing cool </h1>
@@ -24,7 +24,6 @@ templ Show(data []model.SensorData){
     <h1>{greating}</h1>
 
     
-
   
     <h5>{}</h5>
 
@@ -51,6 +50,7 @@ func readQuestionsFromFile(filename string) ([]Question, error) {
 
 	return questions, nil
 }
+
 func getQuestions()string{
   questions, err := readQuestionsFromFile("idk.json")
 	if err != nil {

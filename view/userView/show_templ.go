@@ -13,7 +13,7 @@ import "bytes"
 import "github.com/aleks20905/testWeb_templ/view/base"
 
 //import "github.com/aleks20905/testWeb_templ/db"
-import "github.com/aleks20905/testWeb_templ/jsonThing/model"
+import "github.com/aleks20905/testsWeb_templ/jsonThing"
 
 //import "github.com/aleks20905/testWeb_templ/db/model"
 import "fmt"
@@ -26,7 +26,7 @@ import "log"
 
 var greating = "cool all works"
 
-func Show(data []model.SensorData) templ.Component {
+func Show() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -98,6 +98,7 @@ func readQuestionsFromFile(filename string) ([]Question, error) {
 
 	return questions, nil
 }
+
 func getQuestions() string {
 	questions, err := readQuestionsFromFile("idk.json")
 	if err != nil {
