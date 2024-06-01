@@ -1,4 +1,4 @@
-package model
+package jsonthing
 
 type Question struct {
 	Question string   `json:"question"`

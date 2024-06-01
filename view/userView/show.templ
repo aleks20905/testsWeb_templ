@@ -2,9 +2,9 @@ package user
 
 import "github.com/aleks20905/testWeb_templ/view/base"
 //import "github.com/aleks20905/testWeb_templ/db"
-import "github.com/aleks20905/testsWeb_templ/jsonThing"
+//import "github.com/aleks20905/testsWeb_templ/jsonThing"
 //import "github.com/aleks20905/testWeb_templ/db/model"
-import "fmt"
+//import "fmt"
 import "encoding/json"
 import "io/ioutil"
 import "os"
@@ -12,19 +12,59 @@ import "log"
 //import "github.com/aleks20905/testWeb_templ/db/model"
 
 
+type Question struct {
+	Question string   `json:"question"`
+	Options  []string `json:"options"`
+	Answer   []string `json:"answer"`
+}
+
 var greating = "cool all works"
 
 templ Show(){
   @base.Base(){    
 
-    <h1>helo world or someing cool </h1>
+//    <h1>helo world or someing cool </h1>
+
+    <style>
+    .card {
+      display: flex;
+      background-color: lightgrey;
+      flex-wrap: wrap;
+      border: 15px solid green;
+      padding: 50px;
+      margin: 20px;
+    }
+    </style>
+    
     //for in all Qustinons 
+    for _, q := range getQuestions() {
+
+      <div class="card">
+        <lable for="someting">{ q.Question }</lable>
+        <select id="someting">
+          for _,con := range q.Options{
+
+            <option> { con } </option>
+          } 
+          
+        </select>
+
+// TODO #####
+        <p> ВЯРНИ СА : </p>
+        for _,con := range q.Answer{
+          { con }
+        } 
+// TODO ##### 
+      </div>
+     
+      
+     
+	  }
+
+
 
     
     <h1>{greating}</h1>
-
-    
-  
     <h5>{}</h5>
 
   }
@@ -51,16 +91,14 @@ func readQuestionsFromFile(filename string) ([]Question, error) {
 	return questions, nil
 }
 
-func getQuestions()string{
-  questions, err := readQuestionsFromFile("idk.json")
+func getQuestions()[]Question{
+  questions, err := readQuestionsFromFile("assets/idk.json")
 	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-  for _, q := range questions {
-		fmt.Printf("Question: %s\nOptions: %v\nAnswer: %v\n", q.Question, q.Options, q.Answer)
+		log.Fatal("Error:", err)
+		
 	}
 
+  return questions
 
 }
 

@@ -13,16 +13,21 @@ import "bytes"
 import "github.com/aleks20905/testWeb_templ/view/base"
 
 //import "github.com/aleks20905/testWeb_templ/db"
-import "github.com/aleks20905/testsWeb_templ/jsonThing"
-
+//import "github.com/aleks20905/testsWeb_templ/jsonThing"
 //import "github.com/aleks20905/testWeb_templ/db/model"
-import "fmt"
+//import "fmt"
 import "encoding/json"
 import "io/ioutil"
 import "os"
 import "log"
 
 //import "github.com/aleks20905/testWeb_templ/db/model"
+
+type Question struct {
+	Question string   `json:"question"`
+	Options  []string `json:"options"`
+	Answer   []string `json:"answer"`
+}
 
 var greating = "cool all works"
 
@@ -45,16 +50,77 @@ func Show() templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>helo world or someing cool </h1> <h1>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <style>\r\n    .card {\r\n      display: flex;\r\n      background-color: lightgrey;\r\n      flex-wrap: wrap;\r\n      border: 15px solid green;\r\n      padding: 50px;\r\n      margin: 20px;\r\n    }\r\n    </style> ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var3 string
-			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(greating)
-			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 24, Col: 17}
+			for _, q := range getQuestions() {
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card\"><lable for=\"someting\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var3 string
+				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(q.Question)
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 43, Col: 42}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</lable> <select id=\"someting\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				for _, con := range q.Options {
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<option>")
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+					var templ_7745c5c3_Var4 string
+					templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(con)
+					if templ_7745c5c3_Err != nil {
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 47, Col: 26}
+					}
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</option>")
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</select><p>ВЯРНИ СА : </p>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				for _, con := range q.Answer {
+					var templ_7745c5c3_Var5 string
+					templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(con)
+					if templ_7745c5c3_Err != nil {
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 55, Col: 15}
+					}
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <h1>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var6 string
+			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(greating)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 67, Col: 17}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -99,14 +165,13 @@ func readQuestionsFromFile(filename string) ([]Question, error) {
 	return questions, nil
 }
 
-func getQuestions() string {
-	questions, err := readQuestionsFromFile("idk.json")
+func getQuestions() []Question {
+	questions, err := readQuestionsFromFile("assets/idk.json")
 	if err != nil {
-		fmt.Println("Error:", err)
-		return
+		log.Fatal("Error:", err)
+
 	}
-	for _, q := range questions {
-		fmt.Printf("Question: %s\nOptions: %v\nAnswer: %v\n", q.Question, q.Options, q.Answer)
-	}
+
+	return questions
 
 }
