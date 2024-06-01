@@ -1,0 +1,66 @@
+package user
+
+import "github.com/aleks20905/testWeb_templ/view/base"
+//import "github.com/aleks20905/testWeb_templ/db"
+import "github.com/aleks20905/testWeb_templ/jsonThing/model"
+//import "github.com/aleks20905/testWeb_templ/db/model"
+import "fmt"
+import "encoding/json"
+import "io/ioutil"
+import "os"
+import "log"
+//import "github.com/aleks20905/testWeb_templ/db/model"
+
+
+var greating = "cool all works"
+
+templ Show(data []model.SensorData){
+  @base.Base(){    
+
+    <h1>helo world or someing cool </h1>
+    //for in all Qustinons 
+
+    
+    <h1>{greating}</h1>
+
+    
+
+  
+    <h5>{}</h5>
+
+  }
+}
+
+func readQuestionsFromFile(filename string) ([]Question, error) {
+	file, err := os.Open(filename)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	byteValue, err := ioutil.ReadAll(file)
+	if err != nil {
+		return nil, err
+	}
+
+	var questions []Question
+	err = json.Unmarshal(byteValue, &questions)
+	if err != nil {
+		return nil, err
+	}
+
+	return questions, nil
+}
+func getQuestions()string{
+  questions, err := readQuestionsFromFile("idk.json")
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+  for _, q := range questions {
+		fmt.Printf("Question: %s\nOptions: %v\nAnswer: %v\n", q.Question, q.Options, q.Answer)
+	}
+
+
+}
+
