@@ -1,22 +1,19 @@
 package user
 
-import "github.com/aleks20905/testWeb_templ/view/base"
+import (
+  "github.com/aleks20905/testWeb_templ/view/base"
+  "github.com/aleks20905/testsWeb_templ/jsonthing"
+  "encoding/json"
+  "io/ioutil"
+  "os"
+  "log"
+  ) 
 //import "github.com/aleks20905/testWeb_templ/db"
-//import "github.com/aleks20905/testsWeb_templ/jsonThing"
+//import 
 //import "github.com/aleks20905/testWeb_templ/db/model"
 //import "fmt"
-import "encoding/json"
-import "io/ioutil"
-import "os"
-import "log"
 //import "github.com/aleks20905/testWeb_templ/db/model"
 
-
-type Question struct {
-	Question string   `json:"question"`
-	Options  []string `json:"options"`
-	Answer   []string `json:"answer"`
-}
 
 var greating = "cool all works"
 
@@ -40,14 +37,16 @@ templ Show(){
     for _, q := range getQuestions() {
 
       <div class="card">
-        <lable for="someting">{ q.Question }</lable>
-        <select id="someting">
+        <lable for="userAnswer">{ q.Question }</lable>
+        <select name="userAnswer" id="userAnswer">
           for _,con := range q.Options{
 
             <option> { con } </option>
           } 
           
         </select>
+
+        <input type="submit" value="Submit">
 
 // TODO #####
         <p> ВЯРНИ СА : </p>
@@ -70,7 +69,7 @@ templ Show(){
   }
 }
 
-func readQuestionsFromFile(filename string) ([]Question, error) {
+func readQuestionsFromFile(filename string) ([]model.Question, error) {
 	file, err := os.Open(filename)
 	if err != nil {
 		return nil, err
@@ -91,7 +90,7 @@ func readQuestionsFromFile(filename string) ([]Question, error) {
 	return questions, nil
 }
 
-func getQuestions()[]Question{
+func getQuestions()[]model.Question{
   questions, err := readQuestionsFromFile("assets/idk.json")
 	if err != nil {
 		log.Fatal("Error:", err)

@@ -10,24 +10,20 @@ import "context"
 import "io"
 import "bytes"
 
-import "github.com/aleks20905/testWeb_templ/view/base"
+import (
+	"encoding/json"
+	"github.com/aleks20905/testWeb_templ/view/base"
+	"github.com/aleks20905/testsWeb_templ/jsonthing"
+	"io/ioutil"
+	"log"
+	"os"
+)
 
 //import "github.com/aleks20905/testWeb_templ/db"
-//import "github.com/aleks20905/testsWeb_templ/jsonThing"
+//import
 //import "github.com/aleks20905/testWeb_templ/db/model"
 //import "fmt"
-import "encoding/json"
-import "io/ioutil"
-import "os"
-import "log"
-
 //import "github.com/aleks20905/testWeb_templ/db/model"
-
-type Question struct {
-	Question string   `json:"question"`
-	Options  []string `json:"options"`
-	Answer   []string `json:"answer"`
-}
 
 var greating = "cool all works"
 
@@ -55,20 +51,20 @@ func Show() templ.Component {
 				return templ_7745c5c3_Err
 			}
 			for _, q := range getQuestions() {
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card\"><lable for=\"someting\">")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card\"><lable for=\"userAnswer\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var3 string
 				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(q.Question)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 43, Col: 42}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 40, Col: 44}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</lable> <select id=\"someting\">")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</lable> <select name=\"userAnswer\" id=\"userAnswer\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -80,7 +76,7 @@ func Show() templ.Component {
 					var templ_7745c5c3_Var4 string
 					templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(con)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 47, Col: 26}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 44, Col: 26}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 					if templ_7745c5c3_Err != nil {
@@ -91,7 +87,7 @@ func Show() templ.Component {
 						return templ_7745c5c3_Err
 					}
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</select><p>ВЯРНИ СА : </p>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</select> <input type=\"submit\" value=\"Submit\"><p>ВЯРНИ СА : </p>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -99,7 +95,7 @@ func Show() templ.Component {
 					var templ_7745c5c3_Var5 string
 					templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(con)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 55, Col: 15}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 54, Col: 15}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 					if templ_7745c5c3_Err != nil {
@@ -118,7 +114,7 @@ func Show() templ.Component {
 			var templ_7745c5c3_Var6 string
 			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(greating)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 67, Col: 17}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 66, Col: 17}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 			if templ_7745c5c3_Err != nil {
@@ -144,7 +140,7 @@ func Show() templ.Component {
 	})
 }
 
-func readQuestionsFromFile(filename string) ([]Question, error) {
+func readQuestionsFromFile(filename string) ([]model.Question, error) {
 	file, err := os.Open(filename)
 	if err != nil {
 		return nil, err
@@ -165,7 +161,7 @@ func readQuestionsFromFile(filename string) ([]Question, error) {
 	return questions, nil
 }
 
-func getQuestions() []Question {
+func getQuestions() []model.Question {
 	questions, err := readQuestionsFromFile("assets/idk.json")
 	if err != nil {
 		log.Fatal("Error:", err)
