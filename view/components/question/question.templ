@@ -10,5 +10,26 @@ import (
   ) 
 
 templ question(data jsonthing.Question) {
+
+      <div class="card">
+        <lable for="userAnswer">{ q.Question }</lable>
+        <select name="userAnswer" id="userAnswer">
+          for _,con := range q.Options{
+
+            <option> { con } </option>
+          } 
+          
+        </select>
+
+        <input type="submit" value="Submit">
+
+// TODO #####
+        <p> ВЯРНИ СА : </p>
+        for _,con := range q.Answer{
+          { con }
+        } 
+// TODO ##### 
+      </div>
+
     
 }
