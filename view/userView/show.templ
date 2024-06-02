@@ -2,10 +2,8 @@ package user
 
 import (
   "github.com/aleks20905/testWeb_templ/view/base"
-  "github.com/aleks20905/testsWeb_templ/jsonthing"
-  "encoding/json"
-  "io/ioutil"
-  "os"
+  "github.com/aleks20905/testWeb_templ/jsonthing"
+
   "log"
   ) 
 //import "github.com/aleks20905/testWeb_templ/db"
@@ -69,29 +67,10 @@ templ Show(){
   }
 }
 
-func readQuestionsFromFile(filename string) ([]model.Question, error) {
-	file, err := os.Open(filename)
-	if err != nil {
-		return nil, err
-	}
-	defer file.Close()
 
-	byteValue, err := ioutil.ReadAll(file)
-	if err != nil {
-		return nil, err
-	}
 
-	var questions []Question
-	err = json.Unmarshal(byteValue, &questions)
-	if err != nil {
-		return nil, err
-	}
-
-	return questions, nil
-}
-
-func getQuestions()[]model.Question{
-  questions, err := readQuestionsFromFile("assets/idk.json")
+func getQuestions()[]jsonthing.Question{
+  questions, err := ReadQuestionsFromFile()
 	if err != nil {
 		log.Fatal("Error:", err)
 		
