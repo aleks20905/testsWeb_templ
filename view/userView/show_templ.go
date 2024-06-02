@@ -11,9 +11,9 @@ import "io"
 import "bytes"
 
 import (
-	"github.com/aleks20905/testWeb_templ/components"
 	"github.com/aleks20905/testWeb_templ/jsonthing"
 	"github.com/aleks20905/testWeb_templ/view/base"
+	"github.com/aleks20905/testWeb_templ/view/components"
 
 	"log"
 )
