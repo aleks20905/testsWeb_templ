@@ -3,33 +3,55 @@ package components
 import (
 //   "github.com/aleks20905/testWeb_templ/view/base"
    "github.com/aleks20905/testWeb_templ/jsonthing"
+   "strconv"
 //   "encoding/json"
 //   "io/ioutil"
 //   "os"
-//   "log"
+  "log"
   ) 
 
-templ question(data jsonthing.Question) {
-
-      <div class="card">
-        <lable for="userAnswer">{ q.Question }</lable>
+templ GetQuestion(i int,q jsonthing.Question) {
+    <form action="/submit/question" method="POST">
+      <div class="question">
+      <lable id="Nquestion" > question: { strconv.Itoa(i+1) } </lable>
+        <lable for="userAnswer">  { q.Question }</lable>
         <select name="userAnswer" id="userAnswer">
           for _,con := range q.Options{
 
-            <option> { con } </option>
+            <option value={con}> { con } </option>
           } 
           
         </select>
 
+        <input type="hidden" name="Nquestion" value={strconv.Itoa(i)} >
         <input type="submit" value="Submit">
 
-// TODO #####
-        <p> ВЯРНИ СА : </p>
-        for _,con := range q.Answer{
-          { con }
-        } 
-// TODO ##### 
-      </div>
 
+
+      </div>
+   </form>
     
+}
+
+func GetQuestions()[]jsonthing.Question{
+  questions, err := jsonthing.ReadQuestionsFromFile()
+	if err != nil {
+		log.Fatal("Error:", err)
+		
+	}
+
+  return questions
+
+}
+func GetQuestionAnswer(i int ) []string {
+  questions, err := jsonthing.ReadQuestionsFromFile()
+	if err != nil {
+		log.Fatal("Error:", err)
+		
+	}
+    a := questions[i]
+    
+
+  return a.Answer
+
 }

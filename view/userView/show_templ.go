@@ -11,18 +11,10 @@ import "io"
 import "bytes"
 
 import (
-	"github.com/aleks20905/testWeb_templ/jsonthing"
 	"github.com/aleks20905/testWeb_templ/view/base"
-	"github.com/aleks20905/testWeb_templ/view/components"
-
-	"log"
+	// "github.com/aleks20905/testWeb_templ/jsonthing"
+	"github.com/aleks20905/testWeb_templ/view/components/question"
 )
-
-//import "github.com/aleks20905/testWeb_templ/db"
-//import
-//import "github.com/aleks20905/testWeb_templ/db/model"
-//import "fmt"
-//import "github.com/aleks20905/testWeb_templ/db/model"
 
 var greating = "cool all works"
 
@@ -45,11 +37,15 @@ func Show() templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <style>\r\n    .card {\r\n      display: flex;\r\n      background-color: lightgrey;\r\n      flex-wrap: wrap;\r\n      border: 15px solid green;\r\n      padding: 50px;\r\n      margin: 20px;\r\n    }\r\n    </style> ")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			for _, q := range getQuestions() {
+			for i, q := range components.GetQuestions() {
+				templ_7745c5c3_Err = components.GetQuestion(i, q).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <h1>")
 			if templ_7745c5c3_Err != nil {
@@ -58,7 +54,7 @@ func Show() templ.Component {
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(greating)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 46, Col: 17}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 30, Col: 17}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -82,15 +78,4 @@ func Show() templ.Component {
 		}
 		return templ_7745c5c3_Err
 	})
-}
-
-func getQuestions() []jsonthing.Question {
-	questions, err := jsonthing.ReadQuestionsFromFile()
-	if err != nil {
-		log.Fatal("Error:", err)
-
-	}
-
-	return questions
-
 }

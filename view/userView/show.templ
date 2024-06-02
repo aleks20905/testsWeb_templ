@@ -2,17 +2,11 @@ package user
 
 import (
   "github.com/aleks20905/testWeb_templ/view/base"
-  "github.com/aleks20905/testWeb_templ/jsonthing"
-  "github.com/aleks20905/testWeb_templ/view/components"
+ // "github.com/aleks20905/testWeb_templ/jsonthing"
+  "github.com/aleks20905/testWeb_templ/view/components/question"
   
-
-  "log"
   ) 
-//import "github.com/aleks20905/testWeb_templ/db"
-//import 
-//import "github.com/aleks20905/testWeb_templ/db/model"
-//import "fmt"
-//import "github.com/aleks20905/testWeb_templ/db/model"
+
 
 
 var greating = "cool all works"
@@ -22,22 +16,12 @@ templ Show(){
 
 //    <h1>helo world or someing cool </h1>
 
-    <style>
-    .card {
-      display: flex;
-      background-color: lightgrey;
-      flex-wrap: wrap;
-      border: 15px solid green;
-      padding: 50px;
-      margin: 20px;
-    }
-    </style>
+
     
-    //for in all Qustinons 
-    for _, q := range getQuestions() {
-     // @components.question(q)
-      
-     
+
+    //for in all Qustinons ┴
+    for i, q := range components.GetQuestions() { 
+      @components.GetQuestion(i,q)
 	  }
 
 
@@ -50,14 +34,4 @@ templ Show(){
 }
 
 
-func getQuestions()[]jsonthing.Question{
-  questions, err := jsonthing.ReadQuestionsFromFile()
-	if err != nil {
-		log.Fatal("Error:", err)
-		
-	}
-
-  return questions
-
-}
 

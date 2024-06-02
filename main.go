@@ -15,6 +15,7 @@ func main() {
 	app.Static("/assets", "assets")
 
 	app.GET("/user", handler.HandlerUserShow)
+	app.POST("/submit/question", handler.HandleSubmitQuestion)
 
 	fmt.Print("app starting")
 	app.Start(":3000")
