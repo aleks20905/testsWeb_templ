@@ -39,6 +39,13 @@ canvas {
     border: 15px solid rgb(7, 107, 22);
 
 }
+.result.corect{
+    color: green;
+}
+.result.wrong{
+    color: red;
+}
+
 
 
   

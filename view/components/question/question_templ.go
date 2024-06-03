@@ -33,7 +33,7 @@ func GetQuestion(i int, q jsonthing.Question) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<form action=\"/submit/question\" method=\"POST\"><div class=\"question\"><lable id=\"Nquestion\">question: ")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<form action=\"/submit/question\" method=\"POST\" hx-post=\"/submit/question\" hx-target=\"#result\" hx-swap=\"innerHTML\"><div class=\"question\"><lable id=\"Nquestion\">question: ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -108,7 +108,7 @@ func GetQuestion(i int, q jsonthing.Question) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"> <input type=\"submit\" value=\"Submit\"> <button hx-post=\"/submit/question\">Like</button></div></form>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"> <input type=\"submit\" value=\"Submit\"> <lable id=\"result\"></lable></div></form>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

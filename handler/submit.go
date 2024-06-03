@@ -15,16 +15,18 @@ func HandleSubmitQuestion(c echo.Context) error {
 	userAnswer := c.FormValue("userAnswer")
 	nQuestion, err := strconv.Atoi(c.FormValue("Nquestion"))
 	if err != nil {
-		panic(err)
+		return c.String(http.StatusInternalServerError, "Invalid question number")
 	}
 	log.Println("User selected:", userAnswer)
-	// Process the user's answer, for example, log it or store it
+
+	// Determine if the answer is correct
+	var result string
 	if slices.Contains(components.GetQuestionAnswer(nQuestion), userAnswer) {
-		return c.HTML(http.StatusOK, "<b> Corect Answer </b>")
-		//log.Println("corect Answer")
+		result = "<lable class=\"result corect\"> Corect Answer </lable>"
+	} else {
+		result = "<lable class=\"result wrong\"> Wrong Answer </lable>"
 	}
 
-	// Redirect back to the question page or display a result page
-	return c.HTML(http.StatusOK, "<b> Wrong Answer </b>")
-	//return c.Redirect(http.StatusSeeOther, "/user")
+	// Return the result to be swapped in by htmx
+	return c.HTML(http.StatusOK, result)
 }
