@@ -14,16 +14,20 @@ import (
 func HandleSubmitQuestion(c echo.Context) error {
 	userAnswer := c.FormValue("userAnswer")
 	nQuestion, err := strconv.Atoi(c.FormValue("Nquestion"))
+
 	if err != nil {
-		return c.String(http.StatusInternalServerError, "Invalid question number")
+		log.Println(" Error Invalid question number:")
+		return c.String(http.StatusInternalServerError, "Invalid question number") // not working ????
 	}
 	log.Println("User selected:", userAnswer)
+	log.Println("Nquestion :", nQuestion)
 
-	// Determine if the answer is correct
 	var result string
 	if slices.Contains(components.GetQuestionAnswer(nQuestion), userAnswer) {
+		log.Println(" Corect Answer:")
 		result = "<lable class=\"result corect\"> Corect Answer </lable>"
 	} else {
+		log.Println(" Wrong Answer ")
 		result = "<lable class=\"result wrong\"> Wrong Answer </lable>"
 	}
 

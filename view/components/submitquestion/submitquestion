@@ -11,12 +11,7 @@ import (
 
 templ Submitquestion(q jsonthing.Question) {
 
-
-
   <input type="submit" value="Submit">
-
-
-
 
   // <p> ВЯРНИ СА : </p>
   // for _,con := range q.Answer{

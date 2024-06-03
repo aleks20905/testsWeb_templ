@@ -2,10 +2,10 @@ package user
 
 import (
   "github.com/aleks20905/testWeb_templ/view/base"
- // "github.com/aleks20905/testWeb_templ/jsonthing"
+  // "github.com/aleks20905/testWeb_templ/jsonthing"
   "github.com/aleks20905/testWeb_templ/view/components/question"
   
-  ) 
+) 
 
 
 
@@ -14,15 +14,15 @@ var greating = "cool all works"
 templ Show(){
   @base.Base(){    
 
-//    <h1>helo world or someing cool </h1>
 
-
-    
-
-    //for in all Qustinons ┴
-    for i, q := range components.GetQuestions() { 
+    for i, q := range components.GetRanQuestions() { 
       @components.GetQuestion(i,q)
 	  }
+
+    // //for in all Qustinons 
+    // for i, q := range components.GetQuestions() { 
+    //   @components.GetQuestion(i,q)
+	  // }
 
 
 

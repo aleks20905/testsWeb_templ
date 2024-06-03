@@ -24,5 +24,10 @@ func ReadQuestionsFromFile() ([]Question, error) {
 		return nil, err
 	}
 
+	// Add auto-generating IDs
+	for i := range questions {
+		questions[i].ID = i
+	}
+
 	return questions, nil
 }

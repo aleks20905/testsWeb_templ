@@ -2,8 +2,10 @@ package components
 
 import (
 //   "github.com/aleks20905/testWeb_templ/view/base"
-   "github.com/aleks20905/testWeb_templ/jsonthing"
-   "strconv"
+  "github.com/aleks20905/testWeb_templ/jsonthing"
+  "strconv"
+  "math/rand"
+	"time"
 //   "encoding/json"
 //   "io/ioutil"
 //   "os"
@@ -11,48 +13,67 @@ import (
   ) 
 
 templ GetQuestion(i int,q jsonthing.Question) {
-    <form action="/submit/question" method="POST" hx-post="/submit/question" hx-target="#result" hx-swap="innerHTML">
-      <div class="question">
+
+  <form action="/submit/question" method="POST" hx-post="/submit/question" hx-target={"#result" + strconv.Itoa(q.ID) } hx-swap="innerHTML">
+    <div class="question">
       <lable id="Nquestion" > question: { strconv.Itoa(i+1) } </lable>
-        <lable for="userAnswer">  { q.Question }</lable>
-        <select name="userAnswer" id="userAnswer">
-          for _,con := range q.Options{
+      <lable for="userAnswer">  { q.Question }</lable>
 
-            <option value={con}> { con } </option>
-          } 
-          
-        </select>
+      <select name="userAnswer" id="userAnswer">
+      for _,con := range q.Options{
+        <option value={con}> { con } </option>
+      }     
+      </select>
 
-        <input type="hidden" name="Nquestion" value={strconv.Itoa(i)} >
-        <input type="submit" value="Submit">
+      <input type="hidden" name="Nquestion" value={strconv.Itoa(q.ID)} >
+      <input type="submit" value="Submit">
+
+      // alternativ 
+      // button check (selectedValue, q.Answer)
         
 
-        <lable id="result"></lable>
-      </div>
+      <lable id={"result" + strconv.Itoa(q.ID) }></lable>
       
-   </form>
-    
+    </div>
+  </form> 
 }
 
 func GetQuestions()[]jsonthing.Question{
   questions, err := jsonthing.ReadQuestionsFromFile()
 	if err != nil {
 		log.Fatal("Error:", err)
-		
 	}
+  
 
   return questions
-
 }
+
+func GetRanQuestions()[]jsonthing.Question{
+  questions, err := jsonthing.ReadQuestionsFromFile()
+	if err != nil {
+		log.Fatal("Error:", err)
+	}
+  // Initialize random number generator
+	rand.Seed(time.Now().UnixNano())
+
+	// Shuffle questions to ensure randomness
+	rand.Shuffle(len(questions), func(i, j int) {
+		questions[i], questions[j] = questions[j], questions[i]
+	})
+
+	// Select first 5 questions
+	randomQuestions := questions[:5]
+
+  return randomQuestions
+}
+
+
+
 func GetQuestionAnswer(i int ) []string {
   questions, err := jsonthing.ReadQuestionsFromFile()
 	if err != nil {
 		log.Fatal("Error:", err)
-		
 	}
-    a := questions[i]
-    
 
-  return a.Answer
-
+  return questions[i].Answer
 }
