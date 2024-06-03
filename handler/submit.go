@@ -20,9 +20,11 @@ func HandleSubmitQuestion(c echo.Context) error {
 	log.Println("User selected:", userAnswer)
 	// Process the user's answer, for example, log it or store it
 	if slices.Contains(components.GetQuestionAnswer(nQuestion), userAnswer) {
-		log.Println("corect Answer")
+		return c.HTML(http.StatusOK, "<b> Corect Answer </b>")
+		//log.Println("corect Answer")
 	}
 
 	// Redirect back to the question page or display a result page
-	return c.Redirect(http.StatusSeeOther, "/user")
+	return c.HTML(http.StatusOK, "<b> Wrong Answer </b>")
+	//return c.Redirect(http.StatusSeeOther, "/user")
 }

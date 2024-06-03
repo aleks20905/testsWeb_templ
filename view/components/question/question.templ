@@ -11,7 +11,7 @@ import (
   ) 
 
 templ GetQuestion(i int,q jsonthing.Question) {
-    <form action="/submit/question" method="POST">
+    <form action="/submit/question" method="POST" hx-post="/submit/question" hx-target="#result" hx-swap="innerHTML">
       <div class="question">
       <lable id="Nquestion" > question: { strconv.Itoa(i+1) } </lable>
         <lable for="userAnswer">  { q.Question }</lable>
@@ -25,7 +25,7 @@ templ GetQuestion(i int,q jsonthing.Question) {
 
         <input type="hidden" name="Nquestion" value={strconv.Itoa(i)} >
         <input type="submit" value="Submit">
-
+        
 
 
       </div>
