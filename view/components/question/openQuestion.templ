@@ -1,0 +1,77 @@
+package components
+
+import (
+    // "github.com/aleks20905/testWeb_templ/view/base"
+    "github.com/aleks20905/testWeb_templ/jsonthing"
+    "strconv"
+    "math/rand"
+	"time"
+    // "encoding/json"
+    // "io/ioutil"
+    // "os"
+    "log"
+) 
+
+templ GetOpenQuestion(i int,q jsonthing.OpenQuestion) {
+
+    <form action="/submit/question" method="POST" hx-post="/submit/Open_question" hx-target={"#result" + strconv.Itoa(q.ID) } hx-swap="innerHTML">
+    <div class="question">
+        <lable id="Nquestion" > question: { strconv.Itoa(i+1) } </lable>
+        <lable for="userAnswer">  { q.Question }</lable>
+
+        <input  name="userAnswer"  id="userAnswer" type="text" value="">
+
+
+        <input type="hidden" name="Nquestion" value={strconv.Itoa(q.ID)} >
+        <input type="submit" value="Submit">
+
+        // alternativ 
+        // button check (selectedValue, q.Answer)
+            
+
+        <lable id={"result" + strconv.Itoa(q.ID) }></lable>
+      
+    </div>
+  </form> 
+
+
+}
+
+func GetOpenQuestions()[]jsonthing.OpenQuestion{
+  questions, err := jsonthing.ReadOpenQuestions()
+	if err != nil {
+		log.Fatal("Error:", err)
+	}
+  
+
+  return questions
+}
+
+func GetRanOpenQuestions()[]jsonthing.OpenQuestion{
+  questions, err := jsonthing.ReadOpenQuestions()
+	if err != nil {
+		log.Fatal("Error:", err)
+	}
+  // Initialize random number generator
+	rand.Seed(time.Now().UnixNano())
+
+	// Shuffle questions to ensure randomness
+	rand.Shuffle(len(questions), func(i, j int) {
+		questions[i], questions[j] = questions[j], questions[i]
+	})
+
+	// Select first 5 questions
+	randomQuestions := questions[:5]
+
+  return randomQuestions
+}
+
+
+func GetOpenQuestionAnswer(i int ) string {
+  questions, err := jsonthing.ReadOpenQuestions()
+	if err != nil {
+		log.Fatal("Error:", err)
+	}
+
+  return questions[i].Answer
+}

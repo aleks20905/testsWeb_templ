@@ -16,6 +16,7 @@ func main() {
 
 	app.GET("/user", handler.HandlerUserShow)
 	app.POST("/submit/question", handler.HandleSubmitQuestion)
+	app.POST("/submit/Open_question", handler.HandleSubmitOpenQuestion)
 
 	fmt.Print("app starting")
 	app.Start(":3000")

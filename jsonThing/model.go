@@ -6,3 +6,8 @@ type Question struct {
 	Options  []string `json:"options"`
 	Answer   []string `json:"answer"`
 }
+type OpenQuestion struct {
+	ID       int
+	Question string `json:"question"`
+	Answer   string `json:"answer"`
+}

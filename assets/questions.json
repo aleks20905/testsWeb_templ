@@ -1,0 +1,37 @@
+[
+    {
+      "question": "паралелна MIMD архитектура със слабо взаимодейвите между процесорите би могла да се квалифицира като:",
+      "options": ["ZUMA", "NUMA", "CC-NUMA", "UMA", "COMA", "нито едно от изброените"],
+      "answer": ["NUMA", "CC-NUMA"]
+    },
+    {
+      "question": "Another question here",
+      "options": ["Option1", "Option2", "Option3", "Option4", "Option5"],
+      "answer": ["Answer1", "Answer2"]
+    },
+    {
+        "question": "Another question here 2 ",
+        "options": ["Option1", "Option2", "Option3", "Option4", "Option5"],
+        "answer": ["Answer1", "Answer2"]
+    },
+    {
+        "question": "Another question here 3 ",
+        "options": ["Option1", "Option2", "Option3", "Option4", "Option5"],
+        "answer": ["Answer1", "Answer2"]
+    },
+     {
+        "question": "Another question here 4 ",
+        "options": ["Option1", "Option2", "Option3", "Option4", "Option5"],
+        "answer": ["Answer1", "Answer2"]
+    },
+     {
+        "question": "Another question here 5 ",
+        "options": ["Option1", "Option2", "Option3", "Option4", "Option5"],
+        "answer": ["Answer1", "Answer2"]
+    },
+     {
+        "question": "Another question here 6 ",
+        "options": ["Option1", "Option2", "Option3", "Option4", "Option5"],
+        "answer": ["Answer1", "Answer2"]
+    }
+]

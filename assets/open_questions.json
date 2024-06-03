@@ -1,0 +1,30 @@
+[
+    {
+      "question": "паралелна MIMD архитектура със слабо взаимодейвите между процесорите би могла да се квалифицира като:",
+      "answer": "CC-NUMA"
+    },
+    {
+      "question": "Another OPENquestionhere",
+      "answer": "answer for OPENquestion"
+    },
+    {
+        "question": "Another OPENquestionhere 2 ",
+        "answer": "answer for OPENquestion"
+    },
+    {
+        "question": "Another OPENquestionhere 3 ",
+        "answer": "answer for OPENquestion"
+    },
+     {
+        "question": "Another OPENquestionhere 4 ",
+        "answer": "answer for OPENquestion"
+    },
+     {
+        "question": "Another OPENquestionhere 5 ",
+        "answer": "answer for OPENquestion"
+    },
+     {
+        "question": "Another OPENquestionhere 6 ",
+        "answer": "answer for OPENquestion"
+    }
+]

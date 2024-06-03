@@ -148,7 +148,7 @@ func GetQuestion(i int, q jsonthing.Question) templ.Component {
 }
 
 func GetQuestions() []jsonthing.Question {
-	questions, err := jsonthing.ReadQuestionsFromFile()
+	questions, err := jsonthing.ReadQuestions()
 	if err != nil {
 		log.Fatal("Error:", err)
 	}
@@ -157,7 +157,7 @@ func GetQuestions() []jsonthing.Question {
 }
 
 func GetRanQuestions() []jsonthing.Question {
-	questions, err := jsonthing.ReadQuestionsFromFile()
+	questions, err := jsonthing.ReadQuestions()
 	if err != nil {
 		log.Fatal("Error:", err)
 	}
@@ -176,7 +176,7 @@ func GetRanQuestions() []jsonthing.Question {
 }
 
 func GetQuestionAnswer(i int) []string {
-	questions, err := jsonthing.ReadQuestionsFromFile()
+	questions, err := jsonthing.ReadQuestions()
 	if err != nil {
 		log.Fatal("Error:", err)
 	}
