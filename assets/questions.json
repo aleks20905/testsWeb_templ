@@ -10,28 +10,39 @@
       "answer": ["харвардска архитектура"]
     },
     {
-        "question": "Another question here 2 ",
-        "options": ["Option1", "Option2", "Option3", "Option4", "Option5"],
-        "answer": ["Answer1", "Answer2"]
+        "question": "Коя от изброените е компоент на BLADE сървър, изплозващ CC-NUMA архитектура",
+        "options": ["нито едно от изброените", "chassis", "chip", "всяко от изборените", "node", "core", "blade", "cabinet" ],
+        "answer": ["всяко от изборените"]
     },
     {
-        "question": "Another question here 3 ",
-        "options": ["Option1", "Option2", "Option3", "Option4", "Option5"],
-        "answer": ["Answer1", "Answer2"]
+        "question": "ENIAC е изчислителна машин от първо поколение с основен електронен момпонет ",
+        "options": ["електромеханично реле", "транзистор", "вакумна лампа", "кубит"],
+        "answer": ["вакумна лампа"]
     },
      {
-        "question": "Another question here 4 ",
-        "options": ["Option1", "Option2", "Option3", "Option4", "Option5"],
-        "answer": ["Answer1", "Answer2"]
+        "question": "коя ISA архитектура използва микропрограмен код при обработка на инструкците",
+        "options": ["MISC", "RISC", "нито едно от изброените", "CISC"],
+        "answer": ["CISC"]
     },
      {
-        "question": "Another question here 5 ",
-        "options": ["Option1", "Option2", "Option3", "Option4", "Option5"],
-        "answer": ["Answer1", "Answer2"]
+        "question": "Single Function, Multiple data, Merge Result (SFMuDMeR) e технология която се отнася към",
+        "options": ["вид шина за данни", "вид компютър", "вид памет за съхранение на инструкции", "вид паралелна изчислителна архитектура"],
+        "answer": ["вид паралелна изчислителна архитектура"]
     },
      {
-        "question": "Another question here 6 ",
-        "options": ["Option1", "Option2", "Option3", "Option4", "Option5"],
-        "answer": ["Answer1", "Answer2"]
+        "question": "идята за stored programing computing (компютри със сухранени програми) се базира на разработката на",
+        "options": ["Конард Цузе", "Клод Шанън", "Джон Атаносов", "Джон Фон Нойман", "Алън Тюринг"],
+        "answer": ["Конард Цузе", "Клод Шанън", "Алън Тюринг"]
+    },
+     {
+        "question": "какъв метериал се използва основно при призводството на процесорите ",
+        "options": ["SO_2", "NO_2", "SiO_2", "As_2 O_3", "CaO"],
+        "answer": ["SiO_2"]
+    }
+    ,
+     {
+        "question": "при проектиране на чипове с много изчислиетелни ядра Cluster-on-Die (COD) архитектурата намира проложение при",
+        "options": ["нито едно от изброените", "голям брой ядра (14-18+)", "среден брой ядра (10-12)", "разпределен брой ядра", "мялък брой ядра (4-8)"],
+        "answer": ["голям брой ядра (14-18+)"]
     }
 ]
