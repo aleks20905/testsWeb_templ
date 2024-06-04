@@ -14,22 +14,22 @@ import (
 
 templ GetOpenQuestion(i int,q jsonthing.OpenQuestion) {
 
-    <form action="/submit/question" method="POST" hx-post="/submit/Open_question" hx-target={"#result" + strconv.Itoa(q.ID) } hx-swap="innerHTML">
+    <form action="/submit/question" method="POST" hx-post="/submit/Open_question" hx-target={"#resultOpen" + strconv.Itoa(q.ID) } hx-swap="innerHTML">
     <div class="question">
-        <lable id="Nquestion" > question: { strconv.Itoa(i+1) } </lable>
+        <lable id="question" > question: { strconv.Itoa(i+1) } </lable>
         <lable for="userAnswer">  { q.Question }</lable>
 
         <input  name="userAnswer"  id="userAnswer" type="text" value="">
 
 
-        <input type="hidden" name="Nquestion" value={strconv.Itoa(q.ID)} >
+        <input type="hidden" name="question" value={q.Question} >
         <input type="submit" value="Submit">
 
         // alternativ 
         // button check (selectedValue, q.Answer)
             
 
-        <lable id={"result" + strconv.Itoa(q.ID) }></lable>
+        <lable id={"resultOpen" + strconv.Itoa(q.ID) }></lable>
       
     </div>
   </form> 
