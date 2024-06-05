@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-image: url(https://st.depositphotos.com/1083272/1979/v/600/depositphotos_19799607-stock-illustration-circuit-board.jpg)
 }
 
 main {
@@ -36,8 +37,11 @@ canvas {
     flex-direction: column;
 }
 .question.corect {
- 
     border: 15px solid rgb(7, 107, 22);
+
+}
+.question.corect {
+    border: 15px solid rgb(107, 7, 22);
 
 }
 .result.corect{
@@ -46,7 +50,16 @@ canvas {
 .result.wrong{
     color: red;
 }
-
-
+input[type="submit"] {
+  border-radius: 0px 0px 10px 10px;
+  margin-top: 0px;
+  background-color: goldenrod;
+  font-weight: bold;
+}
+#userAnswer {
+  border-radius: 10px 10px 0px 0px;
+  margin-top: 10px;
+  border-bottom: 0px;
+}
 
   
