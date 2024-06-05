@@ -2,7 +2,7 @@
 
 ## Set-Up
 
-Need to create new file called .env that contains :
+Need to create new file called **``.env``** in the main folder that contains :
 ```bash 
 GEMINI_API_KEY="Ur_gemini_api_key"
 ```
