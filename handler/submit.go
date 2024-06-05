@@ -103,7 +103,7 @@ func CheckOpenAnswer(question, answer string) (bool, error) {
 	cs.History = []*genai.Content{
 		&genai.Content{
 			Parts: []genai.Part{
-				genai.Text(fmt.Sprintf("вярно ли е отговори с true/false : %s ?", question)),
+				genai.Text(fmt.Sprintf("вярно ли е отговори само с 1 за вярно или 0 за грешно : %s ?", question)),
 			},
 			Role: "user",
 		},
@@ -122,10 +122,11 @@ func CheckOpenAnswer(question, answer string) (bool, error) {
 				//fmt.Println("can: ", can)
 				content := can.Content
 				if content != nil {
-					fmt.Println("resp: ", content.Parts[0])
-					boolValue, err := strconv.ParseBool(fmt.Sprint(content.Parts)[1:5])
+
+					fmt.Println("resp: ", content.Parts[0]) //[True. \n]
+					boolValue, err := strconv.ParseBool(fmt.Sprint(content.Parts)[1:2])
 					if err != nil {
-						return false, err
+						return false, nil
 					}
 					return boolValue, nil
 				}
