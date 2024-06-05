@@ -1,3 +1,5 @@
+![screenshot](./assets/repoImage/img1.bmp)
+
 ## Set-Up
 
 Need to create new file called .env that contains :
