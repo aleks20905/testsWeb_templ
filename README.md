@@ -1,4 +1,4 @@
-![screenshot](./assets/repoImage/img1.bmp)
+![screenshot](./assets/repoImages/img1.bmp)
 
 ## Set-Up
 
