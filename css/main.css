@@ -33,6 +33,7 @@ canvas {
     border: 15px solid rgb(62, 67, 68);
     padding: 50px;
     margin: 20px;
+    flex-direction: column;
 }
 .question.corect {
  
