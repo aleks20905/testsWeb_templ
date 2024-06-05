@@ -4,26 +4,102 @@
       "answer": "CC-NUMA"
     },
     {
-      "question": "Another OPENquestionhere",
-      "answer": "answer for OPENquestion"
+      "question": "каква архитектура и какъв процесор използва мобилния ви телефон ",
+      "answer": "arm"
     },
     {
-        "question": "Another OPENquestionhere 2 ",
+        "question": "дайте определение за архитектура на набора от инструкции (ISA) ",
+        "answer": "idk"
+    },
+    {
+        "question": "Колко CCX модула използва ryzen 7 процесор от трете поколение",
+        "answer": "2х4 core"
+    },
+     {
+        "question": "intel или AMD бихте израли за настолен процесор обосновете се на кратко ",
+        "answer": "АМД"
+    },
+     {
+        "question": "MOSFET ",
+        "answer": "metal–oxide–semiconductor field-effect transistor"
+    },
+    {
+        "question": "какво означава съкращението SSE ",
+        "answer": "stream SIMD extention"
+    },
+    {
+        "question": "high bandwidth memory (HBM) e вид високоскоростна памет кято се използва за ",
+        "answer": "idk"
+    },
+    {
+        "question": "Опишете накратко каква функция изпълнява Processing Unit в архитектурата на фон Нойман, описваща принципен модел на компютърна система.",
+        "answer": "answer for OPENquestion"
+    }
+    ,
+     {
+        "question": "Коя процесорна архитектура е по-бърза скаларната или суперскаларната, обяснете защо",
+        "answer": "answer for OPENquestion"
+    }
+    ,
+     {
+        "question": "Какво означава мерната единица FLOPS? ",
+        "answer": "answer for OPENquestion"
+    }
+    ,
+     {
+        "question": "Дайте определение за дълбочина на конвейера на скаларен процесор ",
+        "answer": "answer for OPENquestion"
+    }
+    ,
+     {
+        "question": "Дайте кратко определение за „компютърна архитектура",
         "answer": "answer for OPENquestion"
     },
     {
-        "question": "Another OPENquestionhere 3 ",
+        "question": "Какво означават съкращението ММХ? ",
+        "answer": "MultiMedia extension"
+    },
+    {
+        "question": "Кои са основните фази в работата на конвейера (pipeline) на скаларен процесор?",
         "answer": "answer for OPENquestion"
     },
-     {
-        "question": "Another OPENquestionhere 4 ",
+    {
+        "question": "Какво измерват компютърните benchmarks? ",
+        "answer": "Производителността на машината. Обикновено чрез отчитане на времето за изчисления."
+    },
+    {
+        "question": "Кои са основните фази в работата на конвейера (pipeline) на скаларен процесор?",
+        "answer": "fetch > decode > execute > write "
+    },
+    {
+        "question": "За какво служи TLB (Translation Lookaside Buffer) в архитектурата на съвременните процесори",
         "answer": "answer for OPENquestion"
     },
-     {
-        "question": "Another OPENquestionhere 5 ",
+    {
+        "question": "Another OPENquestionhere 6 ",
         "answer": "answer for OPENquestion"
     },
-     {
+    {
+        "question": "Another OPENquestionhere 6 ",
+        "answer": "answer for OPENquestion"
+    },
+    {
+        "question": "Another OPENquestionhere 6 ",
+        "answer": "answer for OPENquestion"
+    },
+    {
+        "question": "Another OPENquestionhere 6 ",
+        "answer": "answer for OPENquestion"
+    },
+    {
+        "question": "Another OPENquestionhere 6 ",
+        "answer": "answer for OPENquestion"
+    },
+    {
+        "question": "Another OPENquestionhere 6 ",
+        "answer": "answer for OPENquestion"
+    },
+    {
         "question": "Another OPENquestionhere 6 ",
         "answer": "answer for OPENquestion"
     }
