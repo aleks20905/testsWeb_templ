@@ -16,11 +16,13 @@ func main() {
 	app.Static("/css", "css")
 	app.Static("/assets", "assets")
 
+	app.GET("/", handler.HandleRedir) // risky very BAD
 	app.GET("/user", handler.HandlerUserShow)
 	app.POST("/submit/question", handler.HandleSubmitQuestion)
 	app.POST("/submit/Open_question", handler.HandleSubmitOpenQuestion)
 
-	fmt.Print("app starting")
-	app.Start(":3000")
+	fmt.Println("app starting")
+	// fmt.Println("http://localhost:3000/user")
+	app.Start("localhost:3000")
 
 }
