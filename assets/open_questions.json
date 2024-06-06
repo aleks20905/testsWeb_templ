@@ -76,31 +76,19 @@
         "answer": "answer for OPENquestion"
     },
     {
-        "question": "Another OPENquestionhere 6 ",
-        "answer": "answer for OPENquestion"
+        "question": "Какво означава съкращението АѴХ? ",
+        "answer": "  Advanced Vector Extensions"
     },
     {
-        "question": "Another OPENquestionhere 6 ",
-        "answer": "answer for OPENquestion"
+        "question": "Какво наричаме power wall при разработката на процесорите? Каква е приблизителната максимална стойност W/mm2 на отвежданата топлина? ",
+        "answer": "  Is used to describe the limitation of CPU clock rate, CPU design, and CPU performance improvements due to the thermal and electrical power constraints"
     },
     {
-        "question": "Another OPENquestionhere 6 ",
-        "answer": "answer for OPENquestion"
+        "question": "Дайте определение за кеш памет ",
+        "answer": "  Памет, която седи близко до ядрата, в кристала, с бърз достъп."
     },
     {
-        "question": "Another OPENquestionhere 6 ",
-        "answer": "answer for OPENquestion"
-    },
-    {
-        "question": "Another OPENquestionhere 6 ",
-        "answer": "answer for OPENquestion"
-    },
-    {
-        "question": "Another OPENquestionhere 6 ",
-        "answer": "answer for OPENquestion"
-    },
-    {
-        "question": "Another OPENquestionhere 6 ",
-        "answer": "answer for OPENquestion"
+        "question": "Каква задача изпълнява Вураѕѕ в EXECUTE фазата на конвейера? ",
+        "answer": "  Вместо да се зареди командата в кеш паметта се връща назад по конвейера, за скорост."
     }
 ]
