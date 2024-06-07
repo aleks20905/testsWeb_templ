@@ -134,7 +134,7 @@ func GetRanOpenQuestions() []jsonthing.OpenQuestion {
 	})
 
 	// Select first 5 questions
-	randomQuestions := questions[:5]
+	randomQuestions := questions[:10]
 
 	return randomQuestions
 }

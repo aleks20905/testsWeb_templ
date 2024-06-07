@@ -47,7 +47,7 @@ func Show() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			for i, q := range components.GetOpenQuestions() {
+			for i, q := range components.GetRanOpenQuestions() {
 				templ_7745c5c3_Err = components.GetOpenQuestion(i, q).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
