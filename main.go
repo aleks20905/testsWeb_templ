@@ -16,7 +16,7 @@ func main() {
 	app.Static("/css", "css")
 	app.Static("/assets", "assets")
 
-	app.GET("/", handler.HandleRedir) // risky very BAD
+	app.GET("/", handler.HandleRedir) // risky very BAD BIG BUGG prob Митака ме накара
 	app.GET("/user", handler.HandlerUserShow)
 	app.POST("/submit/question", handler.HandleSubmitQuestion)
 	app.POST("/submit/Open_question", handler.HandleSubmitOpenQuestion)
