@@ -96,8 +96,6 @@ type OpenQuestion struct {
    │  ├─ question
    │  │  ├─ openQuestion.templ # Template for open questions
    │  │  └─ question.templ  # Template for multiple-choice questions
-   │  └─ submitquestion
-   │     └─ submitquestion  # Template for the submit question component
    └─ userView
       └─ show.templ         # Template for user view
 ```
