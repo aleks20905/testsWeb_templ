@@ -1,40 +1,73 @@
 ![screenshot](./assets/repoImages/img1.bmp)
 
+
+
 ## Set-Up
 
-Need to create new file called **``.env``** in the main folder that contains :
+Create a new file called **`.env`** in the main folder that contains:
 ```bash 
-GEMINI_API_KEY="Ur_gemini_api_key"
+GEMINI_API_KEY="Your_gemini_api_key"
 ```
 
-Installing Gemini api dependencies using:
+Install Gemini API dependencies using:
 ```bash 
 $ go get github.com/google/generative-ai-go
 ```
-To install [Templ](https://github.com/a-h/templ)
+
+### Installing Dependencies
+
+#### Linux and NixOS
+
+For Linux and NixOS, use your package manager to install `templ` and `air`:
+
+- **Linux**: Use your distribution's package manager (e.g., `apt`, `dnf`, `pacman`) to install `templ` and `air`.
+
+- **NixOS**: Add `templ` and `air` to your environment:
+  Edit your `configuration.nix` file to include `templ` and `air`:
+     ```nix
+     environment.systemPackages = with pkgs; [
+       templ
+       air
+     ];
+     ```
+
+#### Windows
+
+To install `templ`:
 ```bash 
 $ go install github.com/a-h/templ/cmd/templ@latest
 ```
 
-* For running the app is recommended to use **``'air'``** but if u not gonna do any changes its not necessary to have air, its just more easy and convenient to use it than, manualy closeing, rebuilding the project and starting it again etc.
-
-
-#### Using ``air`` [repo link](https://github.com/air-verse/air)
-
-To install **``'air'``** just run this in the console or look up the repo for installation instructions
+To install `air`:
 ```bash 
-$ go install github.com/air-verse/air@latest 
+$ go install github.com/air-verse/air@latest
 ```
-After that just using **``'air'``** it will run your code, while automatically running the code when saved and automatically building the .temp files
+
+### Running the App
+
+* It is recommended to use **`air`** for running the app. `Air` makes it easier and more convenient to use by avoiding the need to manually close, rebuild the project, and start it again.
+
+#### Using `air`
+
+After installing `air`, run your code with automatic rebuilding on file save:
 ```bash 
 $ air
 ```
-#### Without ``air`` altenativ  #TODO
 
-* need to build templ each time.
-* run main.go and whit all other files
-*
-*
+#### Without `air`
+
+If you choose not to use `air`, you will need to manually build and run the project each time you make changes:
+
+1. Build the Templ files:
+   ```bash 
+   $ templ generate
+   ```
+
+2. Run the main Go application:
+   ```bash 
+   $ go run main.go
+   ```
+
 
 
 ## Adding Questions 
@@ -99,5 +132,3 @@ type OpenQuestion struct {
    └─ userView
       └─ show.templ         # Template for user view
 ```
-
-This should provide clear explanations for the purpose of each file in your project.
