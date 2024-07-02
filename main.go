@@ -21,6 +21,8 @@ func main() {
 	app.POST("/submit/question", handler.HandleSubmitQuestion)
 	app.POST("/submit/Open_question", handler.HandleSubmitOpenQuestion)
 
+	app.GET("/admin", handler.HandlerAdminShow)
+
 	fmt.Println("app starting")
 	// fmt.Println("http://localhost:3000/user")
 
