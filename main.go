@@ -23,6 +23,8 @@ func main() {
 
 	fmt.Println("app starting")
 	// fmt.Println("http://localhost:3000/user")
-	app.Start("localhost:3000")
+
+	addr := "localhost:3000"
+	app.Logger.Fatal(app.Start(addr))
 
 }
