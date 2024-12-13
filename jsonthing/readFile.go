@@ -7,7 +7,7 @@ import (
 )
 
 func ReadQuestions() ([]Question, error) {
-	file, err := os.Open("assets/questions.json")
+	file, err := os.Open("/app/assets/questions.json")
 	if err != nil {
 		return nil, err
 	}

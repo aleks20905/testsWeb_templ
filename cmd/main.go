@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"os"
 
 	"github.com/aleks20905/testWeb_templ/handler"
 	"github.com/joho/godotenv"
@@ -25,8 +27,13 @@ func main() {
 
 	fmt.Println("app starting")
 	// fmt.Println("http://localhost:3000/user")
+	dir, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Current working directory:", dir)
 
-	addr := "localhost:3000"
+	addr := ":8080"
 	app.Logger.Fatal(app.Start(addr))
 
 }
