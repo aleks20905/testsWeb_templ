@@ -21,6 +21,7 @@ var DEBUG bool = true
 
 func HandleSubmitQuestion(c echo.Context) error {
 	userAnswer := c.FormValue("userAnswer")
+	subject := c.FormValue("subject")
 	nQuestion, err := strconv.Atoi(c.FormValue("Nquestion"))
 
 	if err != nil {
@@ -31,16 +32,18 @@ func HandleSubmitQuestion(c echo.Context) error {
 	if DEBUG {
 		log.Println("User selected:", userAnswer)
 		log.Println("Nquestion :", nQuestion)
+		log.Println("subject :", subject)
 	}
 
 	var result string
-	if slices.Contains(components.GetQuestionAnswer(nQuestion), userAnswer) {
+	if slices.Contains(components.GetQuestionAnswer(subject, nQuestion), userAnswer) {
 		if DEBUG {
 			log.Println(" Corect Answer:")
 		}
 		result = "<lable class=\"result corect\"> Corect Answer </lable>"
 	} else {
 		if DEBUG {
+			log.Println("the right answe is: ", components.GetQuestionAnswer(subject, nQuestion))
 			log.Println(" Wrong Answer ")
 		}
 		result = "<lable class=\"result wrong\"> Wrong Answer </lable>"

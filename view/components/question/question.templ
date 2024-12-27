@@ -4,15 +4,13 @@ import (
 //   "github.com/aleks20905/testWeb_templ/view/base"
   "github.com/aleks20905/testWeb_templ/jsonthing"
   "strconv"
-  "math/rand"
-	"time"
 //   "encoding/json"
 //   "io/ioutil"
 //   "os"
-  "log"
+  // "log"
   ) 
 
-templ GetQuestion(i int,q jsonthing.Question) {
+templ GetQuestion(i int, subject string,q jsonthing.Question) {
 
   <form action="/submit/question" method="POST" hx-post="/submit/question" hx-target={"#result" + strconv.Itoa(q.ID) } hx-swap="innerHTML">
     <div class="question">
@@ -25,6 +23,7 @@ templ GetQuestion(i int,q jsonthing.Question) {
       }     
       </select>
 
+      <input type="hidden" name="subject" value={subject} >
       <input type="hidden" name="Nquestion" value={strconv.Itoa(q.ID)} >
       <input type="submit" value="Submit">
 
@@ -38,41 +37,11 @@ templ GetQuestion(i int,q jsonthing.Question) {
   </form> 
 }
 
-func GetQuestions()[]jsonthing.Question{
-  questions, err := jsonthing.ReadQuestions()
-	if err != nil {
-		log.Fatal("Error:", err)
-	}
-  
-
-  return questions
-}
-
-func GetRanQuestions()[]jsonthing.Question{
-  questions, err := jsonthing.ReadQuestions()
-	if err != nil {
-		log.Fatal("Error:", err)
-	}
-  // Initialize random number generator
-	rand.Seed(time.Now().UnixNano())
-
-	// Shuffle questions to ensure randomness
-	rand.Shuffle(len(questions), func(i, j int) {
-		questions[i], questions[j] = questions[j], questions[i]
-	})
-
-	// Select first 5 questions
-	randomQuestions := questions[:10]
-
-  return randomQuestions
-}
 
 
-func GetQuestionAnswer(i int ) []string {
-  questions, err := jsonthing.ReadQuestions()
-	if err != nil {
-		log.Fatal("Error:", err)
-	}
 
-  return questions[i].Answer
+func GetQuestionAnswer(subject string,i int ) []string {
+  questions := jsonthing.SubjectQuestionsMap[subject].MultipleChoice
+
+  return questions[i-1].Answer
 }

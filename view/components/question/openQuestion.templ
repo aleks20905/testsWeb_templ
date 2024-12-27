@@ -4,12 +4,9 @@ import (
     // "github.com/aleks20905/testWeb_templ/view/base"
     "github.com/aleks20905/testWeb_templ/jsonthing"
     "strconv"
-    "math/rand"
-	  "time"
     // "encoding/json"
     // "io/ioutil"
     // "os"
-    "log"
 ) 
 
 templ GetOpenQuestion(i int,q jsonthing.OpenQuestion) {
@@ -35,43 +32,4 @@ templ GetOpenQuestion(i int,q jsonthing.OpenQuestion) {
   </form> 
 
 
-}
-
-func GetOpenQuestions()[]jsonthing.OpenQuestion{
-  questions, err := jsonthing.ReadOpenQuestions()
-	if err != nil {
-		log.Fatal("Error:", err)
-	}
-  
-
-  return questions
-}
-
-func GetRanOpenQuestions()[]jsonthing.OpenQuestion{
-  questions, err := jsonthing.ReadOpenQuestions()
-	if err != nil {
-		log.Fatal("Error:", err)
-	}
-  // Initialize random number generator
-	rand.Seed(time.Now().UnixNano())
-
-	// Shuffle questions to ensure randomness
-	rand.Shuffle(len(questions), func(i, j int) {
-		questions[i], questions[j] = questions[j], questions[i]
-	})
-
-	// Select first 5 questions
-	randomQuestions := questions[:10]
-
-  return randomQuestions
-}
-
-
-func GetOpenQuestionAnswer(i int ) string {
-  questions, err := jsonthing.ReadOpenQuestions()
-	if err != nil {
-		log.Fatal("Error:", err)
-	}
-
-  return questions[i].Answer
 }

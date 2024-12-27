@@ -5,6 +5,7 @@ import (
   // "github.com/aleks20905/testWeb_templ/jsonthing"
   "github.com/aleks20905/testWeb_templ/view/components/question"
   
+	"github.com/aleks20905/testWeb_templ/jsonthing"
 ) 
 
 
@@ -12,28 +13,22 @@ import (
 var greating = "cool all works"
 
 templ Show(){
-  @base.Base(){    
+@base.Base() {    
 
+    for i, q := range jsonthing.SubjectQuestionsMap["kop_arhitekturi"].MultipleChoice { 
+		@components.GetQuestion(i,"kop_arhitekturi",q)
+    }
 
-    for i, q := range components.GetRanQuestions() { 
-		@components.GetQuestion(i,q)
-	}
-
-    // //for in all Qustinons 
-    // for i, q := range components.GetQuestions() { 
-    //   @components.GetQuestion(i,q)
-	// }
-
-    for i, q := range components.GetRanOpenQuestions() { 
+    for i, q := range jsonthing.SubjectQuestionsMap["kop_arhitekturi"].OpenEnded { 
 		@components.GetOpenQuestion(i,q)
-	}
+    }
 	
 
     
     <h1>{greating}</h1>
     <h5>{}</h5>
 
-  	}
+}
 }
 
 

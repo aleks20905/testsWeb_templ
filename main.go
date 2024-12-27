@@ -4,12 +4,15 @@ import (
 	"fmt"
 
 	"github.com/aleks20905/testWeb_templ/handler"
+	"github.com/aleks20905/testWeb_templ/jsonthing"
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 )
 
 func main() {
 	godotenv.Load()
+
+	jsonthing.LoadAllSubjects()
 
 	app := echo.New()
 

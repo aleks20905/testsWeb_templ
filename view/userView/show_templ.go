@@ -12,6 +12,8 @@ import (
 	"github.com/aleks20905/testWeb_templ/view/base"
 	// "github.com/aleks20905/testWeb_templ/jsonthing"
 	"github.com/aleks20905/testWeb_templ/view/components/question"
+
+	"github.com/aleks20905/testWeb_templ/jsonthing"
 )
 
 var greating = "cool all works"
@@ -49,17 +51,13 @@ func Show() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			for i, q := range components.GetRanQuestions() {
-				templ_7745c5c3_Err = components.GetQuestion(i, q).Render(ctx, templ_7745c5c3_Buffer)
+			for i, q := range jsonthing.SubjectQuestionsMap["kop_arhitekturi"].MultipleChoice {
+				templ_7745c5c3_Err = components.GetQuestion(i, "kop_arhitekturi", q).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("    ")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			for i, q := range components.GetRanOpenQuestions() {
+			for i, q := range jsonthing.SubjectQuestionsMap["kop_arhitekturi"].OpenEnded {
 				templ_7745c5c3_Err = components.GetOpenQuestion(i, q).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -72,7 +70,7 @@ func Show() templ.Component {
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(greating)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 33, Col: 17}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/userView/show.templ`, Line: 28, Col: 17}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
