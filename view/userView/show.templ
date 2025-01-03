@@ -16,11 +16,11 @@ templ Show(){
 @base.Base() {    
 
     for i, q := range jsonthing.SubjectQuestionsMap["kop_arhitekturi"].MultipleChoice { 
-		@components.GetQuestion(i,"kop_arhitekturi",q)
+      @components.GetQuestion(i,"kop_arhitekturi",q)
     }
 
     for i, q := range jsonthing.SubjectQuestionsMap["kop_arhitekturi"].OpenEnded { 
-		@components.GetOpenQuestion(i,q)
+      @components.GetOpenQuestion(i,q)
     }
 	
 
